@@ -1,0 +1,8 @@
+<div>
+    <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input matInput [(ngModel)]="busca" value="{{busca}}">
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="btn_buscar" (click)="buscar()" cdkFocusInitial>Buscar</button>
+    <mat-progress-bar mode="indeterminate" class="progress" *ngIf="this.buscando"></mat-progress-bar>
+</div>

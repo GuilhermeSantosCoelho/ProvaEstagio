@@ -1,0 +1,10 @@
+<mat-progress-bar mode="indeterminate" class="progress" *ngIf="this.confirm"></mat-progress-bar>
+<h1 mat-dialog-title>Confirmar</h1>
+<div mat-dialog-content>
+  <p>{{data.mensagem}}</p>
+</div>
+<div mat-dialog-actions>
+    <div class="spacer"></div>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="warn" (click)="confirmar()" cdkFocusInitial>Excluir</button>
+</div>

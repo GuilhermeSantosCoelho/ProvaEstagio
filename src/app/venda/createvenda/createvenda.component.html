@@ -1,0 +1,36 @@
+<mat-progress-bar mode="indeterminate" class="progress" *ngIf="this.create"></mat-progress-bar>
+<form fxLayoutAlign="stretch" fxLayout="column" class="form-login" [formGroup]="formGroup" (ngSubmit)="confirmar()">
+    <div mat-dialog-content fxLayoutAlign="stretch" fxLayout="column">
+
+        <h1 mat-dialog-title>{{(data.id != -1 ? 'Editar' : 'Criar')}} venda</h1>
+
+        <mat-form-field>
+            <mat-label>Produto</mat-label>
+            <input matInput [(ngModel)]="data.produto" formControlName="produto" value="{{data.produto}}">
+            <mat-error *ngIf="this.formGroup.controls.produto.errors">
+                {{getErrorMessage(this.formGroup.controls.produto.errors)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Quantidade</mat-label>
+            <input matInput formControlName="quantidade" [(ngModel)]="data.quantidade" value="{{data.quantidade}}">
+            <mat-error *ngIf="this.formGroup.controls.quantidade.errors">
+                {{getErrorMessage(this.formGroup.controls.quantidade.errors)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Valor</mat-label>
+            <input matInput formControlName="valor" type="number" [(ngModel)]="data.valor" value="{{data.valor}}">
+            <mat-error *ngIf="this.formGroup.controls.valor.errors">
+                {{getErrorMessage(this.formGroup.controls.valor.errors)}}</mat-error>
+        </mat-form-field>
+
+        <mat-error fxLayoutAlign="center">{{this.error}}</mat-error>
+    </div>
+    <div mat-dialog-actions>
+        <div class="spacer"></div>
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit"
+            cdkFocusInitial>{{(data.id != -1 ? 'Editar' : 'Criar')}}</button>
+    </div>
+</form>

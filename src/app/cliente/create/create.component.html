@@ -1,0 +1,47 @@
+
+<mat-progress-bar mode="indeterminate" class="progress" *ngIf="this.create"></mat-progress-bar>
+<div mat-dialog-content fxLayoutAlign="stretch" fxLayout="column">
+    
+    <h1 mat-dialog-title>{{(data.id != -1 ? 'Editar' : 'Criar')}} usuário</h1>
+
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="data.nome" value="{{data.nome}}">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input matInput [(ngModel)]="data.telefone" value="{{data.telefone}}">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [(ngModel)]="data.data_nascimento" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>Sexo</mat-label>
+        <mat-select [(ngModel)]="data.sexo">
+            <mat-option value="Masculino">Masculino</mat-option>
+            <mat-option value="Feminino">Feminino</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="data.prime">Conta prime</mat-checkbox>
+
+    <div class="div-radio-group">
+        <label>Tipo de cliente: </label>
+        <mat-radio-group  [(ngModel)]="data.tipoCliente">
+        <mat-radio-button value="Comprador">Comprador</mat-radio-button>
+        <mat-radio-button value="Revendedor">Revendedor</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <div class="spacer"></div>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="confirmar()"
+        cdkFocusInitial>{{(data.id != -1 ? 'Editar' : 'Criar')}}</button>
+</div>

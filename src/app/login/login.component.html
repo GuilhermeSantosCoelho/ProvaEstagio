@@ -1,0 +1,20 @@
+<div fxLayoutAlign="center center" fxFlexFill class="div-login">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Faça seu login</mat-toolbar>
+        <mat-progress-bar *ngIf="this.loginInProccess" color="accent" mode="indeterminate"></mat-progress-bar>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="form-login" [formGroup]="formGroup" (ngSubmit)="login()">
+            <mat-form-field>
+              <mat-label>Usuário</mat-label>
+              <input matInput placeholder="Usuário" formControlName="usuario">
+              <mat-error *ngIf="this.formGroup.controls.usuario.errors">{{getErrorMessage(this.formGroup.controls.usuario.errors)}}</mat-error>
+            </mat-form-field>       
+            <mat-form-field>
+              <mat-label>Senha</mat-label>
+              <input matInput type="password" formControlName="senha">
+              <mat-error *ngIf="this.formGroup.controls.senha.errors">{{getErrorMessage(this.formGroup.controls.senha.errors)}}</mat-error>
+            </mat-form-field> 
+            <mat-error fxLayoutAlign="center">{{this.error}}</mat-error>
+            <button type="submit" mat-raised-button class="mt-5" color="primary">Login</button>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,60 @@
+<div class="container" fxLayoutAlign="center">
+    
+    <mat-card fxFlex="90">
+      <h1>Minhas vendas</h1>
+
+      Busca por produto:
+      <app-busca [array]="dataSource" attribute="produto" (newItemEvent)="resultadoBusca($event)"></app-busca>
+
+      <div id="resultadoBusca"></div>
+
+      <mat-card-content fxLayout="column">
+        <div fxFlex="100" fxLayout="row">
+          <h2>Lista de vendas</h2>
+          <div class="spacer"></div>
+          <button mat-fab color="primary" style="float: right;" (click)="openCreateVenda()"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <table #vendasTable fxFlex="100" mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="produto">
+            <th mat-header-cell *matHeaderCellDef> Produto </th>
+            <td mat-cell *matCellDef="let element"> {{element.produto}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef> Valor </th>
+            <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="data_venda">
+            <th mat-header-cell *matHeaderCellDef> Data da venda </th>
+            <td mat-cell *matCellDef="let element"> {{element.data_venda}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon (click)="openConfirmDelete(element.id)" aria-hidden="false" class="icon-delete" color="error">
+                delete</mat-icon>
+              <mat-icon (click)="openEditVenda(element.id)" aria-hidden="false" class="icon-edit">edit</mat-icon>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>

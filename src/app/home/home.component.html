@@ -1,0 +1,23 @@
+<div class="container" fxLayoutAlign="center" fxLayout="row" fxLayout.xs="column">
+    <mat-card class="card-component" style="margin:0px 30px" (click)="redirect('/clientes')">
+        <mat-card-content>
+            <mat-icon style="font-size: 80px;" aria-hidden="false" aria-label="Example home icon">
+                person
+            </mat-icon>
+        </mat-card-content>
+        <mat-card-title>Clientes</mat-card-title>
+        <mat-card-subtitle>Gerencie seus clientes</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card class="card-component" style="margin:0px 30px" (click)="redirect('/vendas')">
+        <mat-card-content>
+            <mat-icon style="font-size: 80px;" aria-hidden="false" aria-label="Example home icon">
+                attach_money
+            </mat-icon>
+        </mat-card-content>
+        <mat-card-title>Vendas</mat-card-title>
+        <mat-card-subtitle>Gerencie suas vendas</mat-card-subtitle>
+    </mat-card>
+</div>
+
+<mat-progress-bar mode="indeterminate" class="progress" *ngIf="this.redirecionando"></mat-progress-bar>
